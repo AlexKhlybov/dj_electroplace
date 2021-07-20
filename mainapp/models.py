@@ -4,6 +4,7 @@ from random import sample
 from django.db import models
 from django.utils import timezone
 from django.shortcuts import get_object_or_404
+from django.utils.translation import gettext_lazy as _
 
 
 class ProductsCategory(models.Model):
@@ -23,13 +24,16 @@ class ProductsCategory(models.Model):
 
 
 class Brands(models.Model):
-    name = models.CharField(verbose_name="brands_name", max_length=32, unique=True)
-    desc_brands = models.TextField(verbose_name="brands_desc", blank=True)
-    image = models.ImageField(upload_to="brands_images", blank=True)
+    name = models.CharField(verbose_name=_("name"), max_length=32, unique=True)
+    desc_brands = models.TextField(verbose_name=_("description"), blank=True)
+    image = models.ImageField(upload_to=_("images"), blank=True)
     is_active = models.BooleanField(verbose_name="brands_is_active", db_index=True, default=True)
 
     created_at = models.DateTimeField(verbose_name="Created", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="Updated", auto_now=True)
+
+    def __str__(self):
+        return self.name
 
     @staticmethod
     def get_item(pk):
@@ -81,6 +85,7 @@ class News(models.Model):
     title = models.CharField(verbose_name="title_news", max_length=128)
     subtitle = models.CharField(verbose_name="subtitle_news", max_length=128)
     text = models.TextField(verbose_name="description", blank=True)
+    image = models.ImageField(upload_to="news_images", blank=True)
     is_active = models.BooleanField(verbose_name="product_activ", db_index=True, default=True)
 
     public_date = models.DateTimeField(False, default=timezone.now)
@@ -111,13 +116,17 @@ class Contacts(models.Model):
 
 
 class PromoSlider(models.Model):
-    name = models.CharField(verbose_name="name", max_length=256)
+    name = models.CharField(verbose_name=_("name"), max_length=256)
     brand = models.ForeignKey(Brands, on_delete=models.CASCADE)
-    sort_desc = models.CharField(verbose_name="sort_desc", max_length=256)
+    sort_desc = models.CharField(verbose_name=_("sort_desc"), max_length=256)
+    image = models.ImageField(upload_to="promo_images", blank=True)
     is_active = models.BooleanField(verbose_name="product_activ", db_index=True, default=True)
 
     public_date = models.DateTimeField(False, default=timezone.now)
     updated_at = models.DateTimeField(verbose_name="Updated", auto_now=True)
+
+    def __str__(self):
+        return f"{self.name} ({self.public_date})"
 
     def delete(self):
         self.is_active = False

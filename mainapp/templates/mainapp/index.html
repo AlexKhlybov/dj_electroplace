@@ -10,39 +10,19 @@
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
                     <!-- Slides -->
+                    {% for el in promo %}
                         <div class="swiper-slide">
                             <a href="#">
                                 <figure>
                                     <figcaption>
-                                        <h2>Микроволновая печь HUNDAI</h2>
-                                        <p>Готовьте вкусно и быстро</p>
+                                        <h2>{{ el.name }}</h2>
+                                        <p>{{ el.sort_desc }}</p>
                                     </figcaption>
-                                    <p><img src="{% static 'img/slide-bg.jpg' %}" alt="Микроволновая печь"></p>
+                                    <p><img src="{{ media_url }}{{ el.image }}" alt="Микроволновая печь"></p>
                                 </figure>
                             </a>
                         </div>
-                        <div class="swiper-slide">
-                            <a href="#">
-                                <figure>
-                                    <figcaption>
-                                        <h2>Микроволновая печь HUNDAI</h2>
-                                        <p>Готовьте вкусно и быстро</p>
-                                    </figcaption>
-                                    <p><img src="{% static 'img/slide-bg.jpg' %}" alt="Микроволновая печь"></p>
-                                </figure>
-                            </a>
-                        </div>
-                        <div class="swiper-slide">
-                            <a href="#">
-                                <figure>
-                                    <figcaption>
-                                        <h2>Микроволновая печь HUNDAI</h2>
-                                        <p>Готовьте вкусно и быстро</p>
-                                    </figcaption>
-                                    <p><img src="{% static 'img/slide-bg.jpg' %}" alt="Микроволновая печь"></p>
-                                </figure>
-                            </a>
-                        </div>
+                    {% endfor %}
                         
                     </div>
                     <!-- If we need pagination -->
