@@ -5,19 +5,7 @@ import sys
 
 
 def main():
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "electroplace.settings")
-
-    # start new section
-    from django.conf import settings
-
-    if settings.DEBUG:
-        if os.environ.get("RUN_MAIN") or os.environ.get("WERKZEUG_RUN_MAIN"):
-            import ptvsd
-
-            ptvsd.enable_attach(address=("0.0.0.0", 3000))
-            print("Attached!")
-    # end new section
-
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'electroplace.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
@@ -29,5 +17,5 @@ def main():
     execute_from_command_line(sys.argv)
 
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main()
