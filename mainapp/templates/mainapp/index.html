@@ -9,6 +9,7 @@
                 <div class="swiper-container">
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
+
                     <!-- Slides -->
                     {% for el in promo %}
                         <div class="swiper-slide">
@@ -134,14 +135,10 @@
                 <a class="btn btn__stroke" href="#">Смотреть все</a>    
             </div>
             <ul class="brands-list">
-                <li class="brands-list__item"><a href="#"><img src="{% static 'img/samsung-logo.png' %}" alt="samsung"></a></li>
-                <li class="brands-list__item"><a href="#"><img src="{% static 'img/oral-b-logo.png' %}" alt="Oral-B"></a></li>
-                <li class="brands-list__item"><a href="#"><img src="{% static 'img/lg-logo.png' %}" alt="LG"></a></li>
-                <li class="brands-list__item"><a href="#"><img src="{% static 'img/apple-logo.png' %}" alt="Apple"></a></li>
-                <li class="brands-list__item"><a href="#"><img src="{% static 'img/apc-logo.png' %}" alt="APC"></a></li>
-                <li class="brands-list__item"><a href="#"><img src="{% static 'img/xiaomi-logo.png' %}" alt="Xiaomi"></a></li>
-                <li class="brands-list__item"><a href="#"><img src="{% static 'img/lg-oled-logo.png' %}" alt="LG OLED"></a></li>
-                <li class="brands-list__item"><a href="#"><img src="{% static 'img/digma-logo.png' %}" alt="DIGMA"></a></li>
+                {% for brand in brands %}
+                {{ brands.image }}
+                <li class="brands-list__item"><a href="#"><img src="{{ media_url }}{{ brand.image }}" alt="{{ brand.name }}"></a></li>
+                {% endfor %}
             </ul>
         </div>
     </section>

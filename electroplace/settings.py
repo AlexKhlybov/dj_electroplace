@@ -132,4 +132,4 @@ STATICFILES_DIRS = (
 # Media files
 MEDIA_URL = "/"
 
-MEDIA_ROOT = os.path.join(BASE_DIR, "media").replace('\\', '/')
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
