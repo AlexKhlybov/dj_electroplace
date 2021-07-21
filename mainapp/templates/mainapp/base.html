@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
         {% block title %}
-        {{ title }}
+        {{ title|title }}
         {% endblock title %}
     </title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -73,7 +73,7 @@
                 <section>
                     <h2 class="visuality-hidden">Наш адрес</h2>
                     <a href="#"><img class="logo" src="{% static 'img/Logo.svg' %}" alt="logo"></a>
-                    <address>7-я Кожуховская ул., 9, Москва (этаж 1)</address>
+                    <address>{{ contact.city }}, {{ contact.address }}</address>
                 </section>
                 <section>
                     <h2 class="visuality-hidden">Разделы сайта</h2>
