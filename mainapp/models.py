@@ -32,6 +32,9 @@ class Brands(models.Model):
     created_at = models.DateTimeField(verbose_name="Created", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="Updated", auto_now=True)
 
+    class Meta:
+        verbose_name_plural = _("Brands")
+
     def __str__(self):
         return self.name
 
@@ -52,17 +55,21 @@ class Products(models.Model):
     image = models.ImageField(upload_to="product_images", blank=True)
     price = models.DecimalField(verbose_name="price", max_digits=8, decimal_places=2, default=0)
     old_price = models.DecimalField(verbose_name="old_price", max_digits=8, decimal_places=2, default=0, blank=True)
-    screen = models.DecimalField(verbose_name="screen", max_digits=3, decimal_places=2, default=0)
-    sim = models.PositiveIntegerField(verbose_name="sim_qty", default=0)
-    storage = models.PositiveIntegerField(verbose_name="storage", default=0)
-    color = models.CharField(verbose_name="color", max_length=128)
+    screen = models.DecimalField(verbose_name="screen", max_digits=3, decimal_places=2, default=0, blank=True)
+    sim = models.PositiveIntegerField(verbose_name="sim_qty", default=0, blank=True)
+    storage = models.PositiveIntegerField(verbose_name="storage", default=0, blank=True)
+    color = models.CharField(verbose_name="color", max_length=128, blank=True)
     quantity = models.PositiveIntegerField(verbose_name="quantity", default=0)
 
     is_stock = models.BooleanField(verbose_name="product_sale", db_index=True, default=False)
     is_active = models.BooleanField(verbose_name="product_activ", db_index=True, default=True)
+    is_new = models.BooleanField(verbose_name="product_new", db_index=True, default=False)
 
     created_at = models.DateTimeField(verbose_name="Created", auto_now_add=True)
     updated_at = models.DateTimeField(verbose_name="Updated", auto_now=True)
+
+    class Meta:
+        verbose_name_plural = _("Products")
 
     def __str__(self):
         return f"{self.name} {self.storage} {self.color}"
@@ -71,10 +78,11 @@ class Products(models.Model):
     def get_items():
         return Products.objects.filter(is_active=True).order_by("category", "name")
 
-    @property
+    @staticmethod
     def get_stock_products():
         product_stock = Products.objects.filter(is_stock=True)
-        return sample(list(product_stock), 4)
+        stock = sample(list(product_stock), 4)
+        return stock
 
     def delete(self):
         self.is_active = False
@@ -91,6 +99,9 @@ class News(models.Model):
     public_date = models.DateTimeField(False, default=timezone.now)
     updated_at = models.DateTimeField(verbose_name="Updated", auto_now=True)
 
+    class Meta:
+        verbose_name_plural = _("News")
+
     def __str__(self):
         return f"{self.title}"
 
@@ -100,8 +111,15 @@ class News(models.Model):
 
 
 class Benefits(models.Model):
-    title = models.CharField(verbose_name="name", max_length=128)
+    title = models.CharField(verbose_name="title", max_length=128)
     desc = models.TextField(verbose_name="description", blank=True)
+
+    class Meta:
+        verbose_name = _("Advantage")
+        verbose_name_plural = _("Benefits")
+
+    def __str__(self):
+        return f"{self.title}"
 
 
 class Contacts(models.Model):
@@ -114,6 +132,13 @@ class Contacts(models.Model):
     def __str__(self):
         return f"{self.city}, {self.address}"
 
+    class Meta:
+        verbose_name = _("Contact")
+        verbose_name_plural = _("Contacts")
+
+    def __str__(self):
+        return f"{self.city}"
+
 
 class PromoSlider(models.Model):
     name = models.CharField(verbose_name=_("name"), max_length=256)
@@ -124,6 +149,10 @@ class PromoSlider(models.Model):
 
     public_date = models.DateTimeField(False, default=timezone.now)
     updated_at = models.DateTimeField(verbose_name="Updated", auto_now=True)
+
+    class Meta:
+        verbose_name = _("Promo")
+        verbose_name_plural = _("Promotions")
 
     def __str__(self):
         return f"{self.name} ({self.public_date})"
