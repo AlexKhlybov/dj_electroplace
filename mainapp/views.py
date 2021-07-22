@@ -26,9 +26,9 @@ class CatalogListView(ListView):
     model = Products
     paginate_by = 6
     template_name = 'mainapp/catalog.html'
+    queryset = Products.get_items()
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['products'] = Products.get_items()
         context['contact'] = Contacts.objects.first()
         return context

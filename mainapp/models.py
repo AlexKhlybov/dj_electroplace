@@ -76,7 +76,7 @@ class Products(models.Model):
 
     @staticmethod
     def get_items():
-        return Products.objects.filter(is_active=True).order_by("category", "name")
+        return Products.objects.filter(is_active=True, category=2).order_by("category", "name")
 
     @staticmethod
     def get_stock_products():
