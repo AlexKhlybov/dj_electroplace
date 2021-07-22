@@ -80,7 +80,7 @@
                                 </svg>
                             </button>
                             <a href="#">
-                                <img class="product-card__img" src="{{ media }}{{ el.image }}" alt="Изображение товара">
+                                <img class="product-card__img" src="{{ el.image.url }}" alt="Изображение товара">
                                 <p class="product-card__name">
                                     {{ el.name }} {% if el.storage != 0%}{{ el.storage }}{% endif %} {{ el.color }}
                                 </p>

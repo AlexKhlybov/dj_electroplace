@@ -19,7 +19,7 @@
                                         <h2>{{ el.name }}</h2>
                                         <p>{{ el.sort_desc }}</p>
                                     </figcaption>
-                                    <p><img src="{{ media_url }}{{ el.image }}" alt="Микроволновая печь"></p>
+                                    <p><img src="{{ el.image.url }}" alt="Микроволновая печь"></p>
                                 </figure>
                             </a>
                         </div>
@@ -62,7 +62,7 @@
                         </svg>
                     </button>
                     <a href="#">
-                        <img class="product-card__img" src="{{ media }}{{ el.image }}" alt="Изображение товара">
+                        <img class="product-card__img" src="{{ el.image.url }}" alt="Изображение товара">
                         <p class="product-card__name">{{ el.name }}</p>
                         <p class="product-card__prev-price">
                             {% if el.is_stock %}
@@ -86,8 +86,8 @@
             </div>
             <ul class="brands-list">
                 {% for brand in brands %}
-                {{ brands.image }}
-                <li class="brands-list__item"><a href="#"><img src="{{ media_url }}{{ brand.image }}" alt="{{ brand.name }}"></a></li>
+                {{ brands.image.url }}
+                <li class="brands-list__item"><a href="#"><img src="{{ brand.image.url }}" alt="{{ brand.name }}"></a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -99,13 +99,13 @@
                 <a class="btn btn__stroke" href="#">Смотреть все</a>
             </div>
             <ul class="news-list">
-                <li class="news-list__item" style="background: url('{{ top_news.image }}') center no-repeat #000;">
+                <li class="news-list__item" style="background: url('{{ top_news.image.url }}') center no-repeat #000;">
                     <h3 class="title">{{ top_news.title }}</h3>
                     <p class="subtitle">{{ top_news.subtitle }}</p>
                     <a  class="btn" href="#">Подробнее</a>
                 </li>
                 {% for el in news %}
-                <li class="news-list__item" style="background: url('{{ el.image }}') center no-repeat #000;">
+                <li class="news-list__item" style="background: url('{{ el.image.url }}') center no-repeat #000;">
                     <h3 class="title">{{ el.title }}</h3>
                     <a  class="btn" href="#">Подробнее</a>
                 </li>
