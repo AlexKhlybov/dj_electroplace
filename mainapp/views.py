@@ -32,16 +32,3 @@ class CatalogListView(ListView):
         context['products'] = Products.get_items()
         context['contact'] = Contacts.objects.first()
         return context
-
-
-
-def main(request):
-    return render(request, "mainapp/index.html")
-
-
-def catalog(request):
-    return render(request, "mainapp/catalog.html")
-
-
-def contact(request):
-    pass
