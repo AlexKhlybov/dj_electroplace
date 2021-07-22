@@ -1194,7 +1194,7 @@ select:focus {
   margin-right: 5px;
 }
 
-.pagination {
+.pagination__main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1210,7 +1210,7 @@ select:focus {
   box-sizing: border-box;
   width: 46px;
   height: 46px;
-  background: url("../img/pagination-arrow.svg") center no-repeat #FFFFFF;
+  background: url("/static/img/pagination-arrow.svg") center no-repeat #FFFFFF;
   border: 1px solid #DEDEE2;
   border-radius: 50%;
   -webkit-transition: 0.1s linear;
@@ -1220,13 +1220,13 @@ select:focus {
 .pagination__prev:hover,
 .pagination__next:hover {
   border: 1px solid #005AAB;
-  background: url("../img/pagination-arrow-hover.svg") center no-repeat #FFFFFF;
+  background: url("/static/img/pagination-arrow-hover.svg") center no-repeat #FFFFFF;
 }
 
 .pagination__prev:active,
 .pagination__next:active {
   border: 1px solid #005AAB;
-  background: url("../img/pagination-arrow-active.svg") center no-repeat #FFFFFF;
+  background: url("/static/img/pagination-arrow-active.svg") center no-repeat #FFFFFF;
 }
 
 .pagination__prev {
@@ -1235,11 +1235,17 @@ select:focus {
   margin-right: 30px;
 }
 
+.pagination__li {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
 .pagination__next {
-  margin-left: 15px;
+  margin-left: 30px;
 }
 
 .pagination__page {
+  color: #000;
   width: 46px;
   height: 46px;
   border: 1px solid #DEDEE2;
