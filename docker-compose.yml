@@ -1,19 +1,6 @@
 version: "3.1"
    
 services:  
-  db:
-    container_name: elp_psq
-    image: postgres
-    environment:
-      - POSTGRES_DB=post
-      - POSTGRES_USER=post
-      - POSTGRES_PASSWORD=post
-    volumes:
-      - ./postgress/:/var/lib/postgresql/data/
-    ports:
-      - 5432:5432
-    restart: always
-
   web:
     container_name: elp_dja
     build: .
@@ -26,3 +13,20 @@ services:
     restart: always
     depends_on:
       - db
+
+  db:
+    container_name: elp_psq
+    image: postgres
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    volumes:
+      - ./postgresql/dumps:/code/dumps
+      - ./postgresql/data:/var/lib/postgresql/data
+    ports:
+      - ${DB_PORT}:5432
+    restart: always
+
+volumes: 
+  postgresql:

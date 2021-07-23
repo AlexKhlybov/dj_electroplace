@@ -2,8 +2,8 @@ from os import name
 from random import sample
 
 from django.db import models
-from django.utils import timezone
 from django.shortcuts import get_object_or_404
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 
@@ -17,7 +17,7 @@ class ProductsCategory(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     def delete(self):
         self.is_active = False
         self.save()
