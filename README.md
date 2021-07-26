@@ -10,7 +10,14 @@ Online store of household appliances on Django.
 * Docker-compose
 
 
-## Environment
+## Getting started
+clone:
+```
+$ git clone https://github.com/AlexKhlybov/dj_electroplace.git
+$ cd dj_electroplace
+```
+
+### Environment
 Env file in the root of the project and add the following (example) to it:
 ```
 DEBUG=1
@@ -22,13 +29,6 @@ DB_NAME=post
 DB_USER=post
 DB_HOST=db
 DB_PORT=5432
-```
-
-## Getting started
-clone:
-```
-$ git clone https://github.com/AlexKhlybov/dj_electroplace.git
-$ cd dj_electroplace
 ```
 
 This project uses `docker-compose`, let's raise our application:
