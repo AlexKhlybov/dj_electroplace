@@ -1,0 +1,184 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% block title %}
+        {{ title|title }}
+        {% endblock title %}
+    </title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    {% block css %}
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/normalize.css' %}">
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    {% endblock css %}
+</head>
+
+<body class="body">
+   <header class="header">
+        <div class="header-top">
+            <div class="container">
+                <ul class="header-top__list">
+                    <li class="header-top__item"><a href="#">Магазины</a></li>
+                    <li class="header-top__item"><a href="#">Доставка  и оплата</a></li>
+                    <li class="header-top__item"><a href="#">Кредиты и рассрочка</a></li>
+                    <li class="header-top__item"><a href="tel:84954448885">8 (495) 444-888-5</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container">
+            <div class="header-center">
+                <a  href="/" class="header-logo">
+                    <img src="{% static 'img/Logo.svg' %}" alt="Logo">
+                </a>
+                <form class="header-search" action="#">
+                    <input class="header-search__input" type="search" placeholder="Поиск....">
+                </form>
+                <a  class="header__fav" href="#">Избранное <span>(0)</span></a>
+                <a  class="header__cart" href="#">Корзина <span>(0)</span></a>
+            </div>
+            <div class="header-bottom">
+                <nav class="header-nav">
+                    <a href="/catalog/" class="btn btn__fill header-nav__catalog">Каталог</a>
+                    <ul class="header-nav__list">
+                        <li class="header-nav__item"><a href="#">Скидки</a></li>
+                        <li class="header-nav__item"><a href="/catalog/">Смартфоны</a></li>
+                        <li class="header-nav__item"><a href="#">Телевизоры</a></li>
+                        <li class="header-nav__item"><a href="#">Ноутбуки</a></li>
+                        <li class="header-nav__item"><a href="#">Стиральные машины</a></li>
+                        <li class="header-nav__item"><a href="#">Холодильники</a></li>
+                        <li class="header-nav__item"><a href="#">Пылесосы</a></li>
+                        <li class="header-nav__item"><a href="#">Микроволновки</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+   </header>
+
+   <main>
+    {% block content %}
+    {% endblock content %}
+   </main>
+
+   {% block footer %}
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-wrapper">
+                <section>
+                    <h2 class="visuality-hidden">Наш адрес</h2>
+                    <a href="#"><img class="logo" src="{% static 'img/Logo.svg' %}" alt="logo"></a>
+                    <address>{{ contact.city }}, {{ contact.address }}</address>
+                </section>
+                <section>
+                    <h2 class="visuality-hidden">Разделы сайта</h2>
+                    <ul>
+                        <li><a href="#">Скидки</a></li>
+                        <li><a href="#">Акции</a></li>
+                        <li><a href="#">Покупателям</a></li>
+                        <li><a href="#">Информация</a></li>
+                        <li><a href="#">Доставка</a></li>
+                    
+                    </ul>
+                </section>
+                <section>
+                    <h2 class="visuality-hidden">Разделы сайта</h2>
+                    <ul>
+                        <li><a href="#">Гарантия</a></li>
+                        <li><a href="#">Кредит и рассрочка</a></li>
+                        <li><a href="#">Новости</a></li>
+                        <li><a href="#">Вакансии</a></li>
+                    </ul>
+                </section>
+                <section class="footer-socials">
+                    <h2 class="visuality-hidden">Мы в социальных сетях</h2>
+                    <a class="footer-socials__item" href="https://www.facebook.com/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16.6235 3.00375L14.225 3C11.5302 3 9.78881 4.73871 9.78881 7.42982V9.47227H7.37715C7.16876 9.47227 7 9.63668 7 9.83949V12.7988C7 13.0016 7.16895 13.1658 7.37715 13.1658H9.78881V20.633C9.78881 20.8358 9.95756 21 10.166 21H13.3125C13.5209 21 13.6896 20.8356 13.6896 20.633V13.1658H16.5094C16.7178 13.1658 16.8866 13.0016 16.8866 12.7988L16.8877 9.83949C16.8877 9.74211 16.8479 9.64886 16.7773 9.57994C16.7067 9.51103 16.6104 9.47227 16.5104 9.47227H13.6896V7.74086C13.6896 6.90868 13.8934 6.48622 15.0074 6.48622L16.6231 6.48566C16.8313 6.48566 17.0001 6.32124 17.0001 6.11863V3.37077C17.0001 3.16835 16.8315 3.00412 16.6235 3.00375Z" fill="white"/></svg></a>
+
+                    <a class="footer-socials__item" href="https://www.instagram.com/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M16 4H8C5.8002 4 4 5.79941 4 8V16C4 18.1998 5.8002 20 8 20H16C18.1998 20 20 18.1998 20 16V8C20 5.79941 18.1998 4 16 4ZM12 15.3332C10.1588 15.3332 8.6666 13.8404 8.6666 12C8.6666 10.1588 10.1588 8.6666 12 8.6666C13.8404 8.6666 15.3334 10.1588 15.3334 12C15.3334 13.8404 13.8404 15.3332 12 15.3332ZM16.3334 8.6666C15.7806 8.6666 15.3334 8.21879 15.3334 7.6666C15.3334 7.11441 15.7806 6.6666 16.3334 6.6666C16.8862 6.6666 17.3334 7.11441 17.3334 7.6666C17.3334 8.21879 16.8862 8.6666 16.3334 8.6666Z" fill="white"/></svg></a>
+
+                    <a class="footer-socials__item" href="https://vk.com/"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.9368 12.7343C17.6458 12.3843 17.729 12.2286 17.9368 11.9157C17.9405 11.9121 20.3429 8.75071 20.5904 7.67857L20.5919 7.67786C20.7149 7.28714 20.5919 7 19.9971 7H18.029C17.528 7 17.297 7.24643 17.1732 7.52214C17.1732 7.52214 16.1712 9.80643 14.7537 11.2871C14.2961 11.715 14.0846 11.8521 13.8349 11.8521C13.7119 11.8521 13.5206 11.715 13.5206 11.3243V7.67786C13.5206 7.20929 13.3804 7 12.9656 7H9.87099C9.55673 7 9.36997 7.21857 9.36997 7.42214C9.36997 7.86643 10.0787 7.96857 10.1522 9.21857V11.9307C10.1522 12.525 10.039 12.6343 9.78774 12.6343C9.11871 12.6343 7.49491 10.3407 6.53262 7.71571C6.33837 7.20643 6.14861 7.00071 5.64384 7.00071H3.67502C3.11325 7.00071 3 7.24714 3 7.52286C3 8.01 3.66902 10.4321 6.11111 13.6321C7.73866 15.8164 10.0307 17 12.1158 17C13.3691 17 13.5221 16.7371 13.5221 16.285C13.5221 14.1979 13.4089 14.0007 14.0366 14.0007C14.3276 14.0007 14.8287 14.1379 15.9987 15.1914C17.336 16.4407 17.5558 17 18.3043 17H20.2723C20.8334 17 21.1176 16.7371 20.9541 16.2186C20.5799 15.1279 18.0508 12.8843 17.9368 12.7343V12.7343Z" fill="white"/></svg></a>
+
+                    <a class="footer-socials__item" href="https://www.youtube.com/"><svg width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M17.6291 2.03419C17.4217 1.23876 16.8137 0.61173 16.0427 0.397545C14.6341 0 8.9998 0 8.9998 0C8.9998 0 3.36567 0 1.95711 0.382473C1.20092 0.596431 0.578102 1.23887 0.370679 2.03419C0 3.48702 0 6.5 0 6.5C0 6.5 0 9.52817 0.370679 10.9658C0.578321 11.7611 1.18609 12.3882 1.95722 12.6023C3.3805 13 9.00002 13 9.00002 13C9.00002 13 14.6341 13 16.0427 12.6175C16.8138 12.4035 17.4217 11.7764 17.6294 10.9811C17.9999 9.52817 17.9999 6.5153 17.9999 6.5153C17.9999 6.5153 18.0148 3.48702 17.6291 2.03419V2.03419ZM7.20595 9.2835V3.7165L11.8912 6.5L7.20595 9.2835Z" fill="white"/></svg></a>
+                </section>
+            </div>
+        </div>
+        <section class="footer-copyright">
+            <h2 class="visuality-hidden">Copyright</h2>
+            <div class="container">
+                <div class="footer-copyright-wrapper">
+                    
+                    <div class="footer-copyright-wrapper__left">
+                        <p>© Electro place, 2003–2021</p>
+                        <a href="#">Политика обработки персональных данных</a>
+                    </div>
+                    <div class="footer-copyright-wrapper__right">
+                        <p class="text">Разработка сайта:</p>
+                        <a href="https://garpix.com/" class="img"><img src="{% static 'img/Garpix-logo.svg' %}" alt="logo GARPIX"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </footer>
+    {% endblock footer%}
+
+    <!-- MODAL -->
+    <div class="modal-dialog__backdrop ">
+        <div class="modal-wrapper">
+            <!-- add-to-cart-modal -->
+            <div class="modal add-to-cart-modal" >
+                <h1 class="section-title">Товар добавлен в корзину</h1>
+                <button class="btn__close-modal"></button>
+                <button aria-label="Кнопка Оформить заказ" class="btn btn__fill">Оформить заказ</button>
+                <button aria-label="Кнопка Продолжить покупки" class="btn btn__stroke btn__continue">Продолжить покупки</button>
+            </div>
+
+            <!-- feedback-modal -->
+            <div class="modal feedback-modal " >
+                <h1 class="section-title">Написать нам</h1>
+                <button class="btn__close-modal"></button>
+                <form action="#" class="feedback-modal__form">
+                    <input type="text" name="name" class="feedback-modal__input" placeholder="Ваше имя" >
+                    <input type="text" name="phone" class="feedback-modal__input" placeholder="Ваш телефон">
+                    <textarea class="feedback-modal__input feedback-modal__input_textarea" name="message" id="message" cols="30" rows="5" placeholder="Сообщение"></textarea>
+                    <button aria-label="Кнопка Отправить" type="submit" class="btn btn__fill ">Отправить</button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+
+    {% block js %}
+        <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+        <script>// слайдер
+            const swiper = new Swiper('.swiper-container', {
+            // Optional parameters
+            loop: true,
+
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
+
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+            });
+        </script>
+        <script src="{% static 'js/main.js' %}"></script>
+    {% endblock js %}
+
+</body>
+</html>

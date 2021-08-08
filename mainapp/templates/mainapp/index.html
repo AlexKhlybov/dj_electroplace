@@ -1,0 +1,160 @@
+{% extends 'mainapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <section class="main">
+        <h1 class="visuality-hidden">ELECTRO PLACE - Техника для дома</h1>
+        <div class="container">
+            <div class="main-wrapper">
+                <div class="swiper-container">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper">
+
+                    <!-- Slides -->
+                    {% for el in promo %}
+                        <div class="swiper-slide">
+                            <a href="#">
+                                <figure>
+                                    <figcaption>
+                                        <h2>{{ el.name }}</h2>
+                                        <p>{{ el.sort_desc }}</p>
+                                    </figcaption>
+                                    <p><img src="{{ el.image.url }}" alt="Микроволновая печь"></p>
+                                </figure>
+                            </a>
+                        </div>
+                    {% endfor %}
+                        
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <div class="main-offer">
+                    <p class="main-offer__text">Новая линейка телевизоров samsung</p>
+                    <img class="main-offer__img" src="{% static 'img/tv-samsung.png' %}" alt="Фото телевизора">
+                    <a class="btn main-offer__btn" href="/catalog/">Смотреть каталог</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="hits">
+        <div class="container">
+            <div class="title-wrapper">
+                <h2 class="section-title">Хиты продаж</h2>
+                <a class="btn btn__stroke" href="#">Смотреть все</a>
+            </div>
+            <ul class="product-cards">
+                
+                {% for el in hits %}
+                <li class="product-card  {% if el.is_new %}new{% endif %}">
+                    <button aria-label="Кнопка добавления в избранное" class="product-card__fav-btn">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path class="stroke"
+                                d="M12 21C11.7153 21 11.4408 20.8957 11.2268 20.7061C10.4189 19.9914 9.63992 19.3198 8.95267 18.7274L8.94916 18.7243C6.93423 16.9873 5.19427 15.4873 3.98364 14.0096C2.63034 12.3576 2 10.7914 2 9.08032C2 7.41788 2.56351 5.88418 3.58661 4.76153C4.62192 3.62561 6.04251 3 7.58716 3C8.74164 3 9.79892 3.36922 10.7296 4.09733C11.1992 4.46486 11.6249 4.91466 12 5.43932C12.3752 4.91466 12.8008 4.46486 13.2706 4.09733C14.2012 3.36922 15.2585 3 16.413 3C17.9575 3 19.3782 3.62561 20.4135 4.76153C21.4366 5.88418 22 7.41788 22 9.08032C22 10.7914 21.3698 12.3576 20.0165 14.0094C18.8059 15.4873 17.0661 16.9872 15.0515 18.724C14.363 19.3173 13.5828 19.99 12.773 20.7064C12.5592 20.8957 12.2846 21 12 21ZM7.58716 4.18516C6.37363 4.18516 5.25882 4.67509 4.44781 5.56481C3.62476 6.46796 3.17142 7.71641 3.17142 9.08032C3.17142 10.5194 3.70013 11.8064 4.88559 13.2534C6.03137 14.652 7.73563 16.1212 9.70889 17.8224L9.71255 17.8255C10.4024 18.4202 11.1844 19.0944 11.9983 19.8144C12.8171 19.0931 13.6003 18.4177 14.2916 17.8221C16.2647 16.1209 17.9688 14.652 19.1146 13.2534C20.2999 11.8064 20.8286 10.5194 20.8286 9.08032C20.8286 7.71641 20.3752 6.46796 19.5522 5.56481C18.7413 4.67509 17.6264 4.18516 16.413 4.18516C15.524 4.18516 14.7078 4.47103 13.9872 5.03475C13.3449 5.53734 12.8975 6.17268 12.6352 6.61723C12.5003 6.84583 12.2629 6.98228 12 6.98228C11.7371 6.98228 11.4997 6.84583 11.3648 6.61723C11.1026 6.17268 10.6552 5.53734 10.0128 5.03475C9.29218 4.47103 8.47598 4.18516 7.58716 4.18516Z"
+                                fill="#7D868F" />
+                            <path class="fill"
+                                d="M 9.948093,18.092327 C 4.4329225,13.29314 2.962449,11.533769 2.9517687,9.0796286 2.9429753,7.0590596 3.4010481,6.301447 5.7217851,4.4122391 6.2849624,3.9537818 6.771929,3.6757475 7.7489556,3.6817958 c 0.8943861,0.00554 1.0246103,0.5250371 1.5305987,0.7648857 0.6726427,0.3188461 1.5608957,0.9623249 1.9444137,1.7352096 0.483446,0.6755966 0.363461,0.6327627 0.764308,0.6352441 0.295896,0.00183 0.38915,-0.1533576 0.912405,-0.8127447 1.423987,-1.7944587 2.336159,-1.9824022 3.797517,-1.8798172 1.104911,0.077563 1.844908,0.3152662 2.623318,1.0453003 1.039198,0.9746139 1.686516,2.3752578 1.697322,3.9809497 0.01386,2.0587027 -1.134218,3.7450577 -3.900945,6.2929127 -1.274342,1.173531 -5.061387,4.736317 -5.119593,4.370664 -0.158381,0.320991 -1.011558,-0.818261 -2.050207,-1.722073 z" fill="none"
+                                />
+                        </svg>
+                    </button>
+                    <a href="#">
+                        <img class="product-card__img" src="{{ el.image.url }}" alt="Изображение товара">
+                        <p class="product-card__name">{{ el.name }}</p>
+                        <p class="product-card__prev-price">
+                            {% if el.is_stock %}
+                                {{ el.old_price }} ₽
+                            {% endif %}
+                        </p>
+                        <p class="product-card__price">{{ el.price }}</p>
+                    </a>
+                    <span class="product-card__cart"></span>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </section>
+    <section class="brands">
+        <div class="container">
+            <div class="title-wrapper">
+                <h2 class="section-title">Популярные бренды</h2>
+                <a class="btn btn__stroke" href="#">Смотреть все</a>    
+            </div>
+            <ul class="brands-list">
+                {% for brand in brands %}
+                {{ brands.image.url }}
+                <li class="brands-list__item"><a href="#"><img src="{{ brand.image.url }}" alt="{{ brand.name }}"></a></li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    <section class="news">
+        <div class="container">
+            <div class="title-wrapper">
+                <h2 class="section-title">Новости и акции</h2>
+                <a class="btn btn__stroke" href="#">Смотреть все</a>
+            </div>
+            <ul class="news-list">
+                <li class="news-list__item" style="background: url('{{ top_news.image.url }}') center no-repeat #000;">
+                    <h3 class="title">{{ top_news.title }}</h3>
+                    <p class="subtitle">{{ top_news.subtitle }}</p>
+                    <a  class="btn" href="#">Подробнее</a>
+                </li>
+                {% for el in news %}
+                <li class="news-list__item" style="background: url('{{ el.image.url }}') center no-repeat #000;">
+                    <h3 class="title">{{ el.title }}</h3>
+                    <a  class="btn" href="#">Подробнее</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    <section class="features">
+        <div class="container">
+            <h2 class="section-title">Преимущества</h2>
+            <ul class="features-list">
+                {% for el in benefits %}
+                <li class="features-list__item">
+                    <h4 class="title">{{ el.title }}</h4>
+                    <p class="text">{{ el.desc }}</p>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </section>
+    <section class="contacts">
+        <div class="container">
+            <h2 class="section-title">Контакты</h2>
+            <div class="content">
+                <div class="map">
+                    <script  async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ad72508a893ff8a62cb3a3262aa10230d9d2461efeebe2f367f99541fc70545f0&amp;width=670&amp;height=400&amp;lang=ru_RU&amp;scroll=false"></script>
+                </div>
+                <ul class="contacts-list">
+                    <li class="contacts-list__item">
+                        <h4 class="title">Адрес</h4>
+                        <address class="text">{{ contact.city }}, {{ contact.address }}</address>
+                    </li>
+                    <li class="contacts-list__item">
+                        <h4 class="title">Телефон</h4>
+                        <a  class="text" href="tel:84954448885">{{ contact.phone }}</a>
+                    </li>
+                    <li class="contacts-list__item">
+                        <h4 class="title">График работы</h4>
+                        <p class="text">{{ contact.timetable }}</p>
+                    </li>
+                    <li class="contacts-list__item">
+                        <button aria-label="Кнопка Написать нам" class="btn btn__fill btn__send">
+                            Написать нам
+                        </button>
+                    </li>
+                </ul>
+                
+            </div>
+        </div>
+    </section>
+    {% include 'mainapp/includes/subscribe.html' %}
+{% endblock content %}

@@ -147,7 +147,7 @@ cython_debug/
 .history/
 
 # Postgres data
-postgress/
+postgresql
 
 # Temp file
-tmp/
+tmp
